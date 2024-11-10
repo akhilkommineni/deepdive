@@ -47,7 +47,7 @@
 //       console.log(count);
 //     };
 //   }
-  
+
 //   const func1 = outer();
 //   const func2 = outer();
 // func1()
@@ -56,11 +56,46 @@
 
 //-----------
 
-function multiply(x){
-    return function(y){
-        return x*y
+// function multiply(x){
+//     return function(y){
+//         return x*y
+//     }
+// }
+
+// const double = multiply(2)
+// console.log(double(5))
+
+// self exec function
+
+// (
+//     function(){
+//         let secret = 'hidden';
+//         console.log(secret);
+//     }
+// )()
+
+//-----------
+
+function testVar() {
+    var x = 1;
+    if (true) {
+        var x = 2;
+        console.log(x);  // Output inside if block
     }
+    console.log(x);  // Output outside if block
 }
 
-const double = multiply(2)
-console.log(double(5))
+testVar();
+
+//----blocklevel scoping
+
+//watchout below -- self executing function
+
+(function testScoping(){
+    let x=1;
+    if(true){
+        let x=2;
+        console.log(2)
+    }
+    console.log(x)
+})()
